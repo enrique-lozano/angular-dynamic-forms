@@ -1,0 +1,67 @@
+<form dynamicForm class="dynamic-form">
+
+    <div class="row w-100" *transloco="let t">
+        <ng-container *ngFor="let field of formFields; let i = index">
+
+            <!-- SEPARATOR -->
+            <ng-container *ngIf="field[1].type === 'separator'">
+                <div class="field-separator" [class]="field[1].classList" [id]="field[1].id">
+                    <h6 *ngIf="field[1].label !== ''">{{ t(field[1].label) }}</h6>
+                </div>
+            </ng-container>
+
+            <!-- TEXT OR NUMBER -->
+            <ng-container *ngIf="field[1].type === 'input'">
+                <app-dynamic-input [key]="field[0]" [field]="$any(field[1])" [class]="field[1].hostClass">
+                </app-dynamic-input>
+            </ng-container>
+
+            <!-- TEXTAREA -->
+            <ng-container *ngIf="field[1].type === 'textArea'">
+                <app-dynamic-text-area [key]="field[0]" [field]="field[1]" [class]="field[1].hostClass">
+                </app-dynamic-text-area>
+            </ng-container>
+
+            <!-- SELECT -->
+            <ng-container *ngIf="field[1].type === 'select'">
+                <app-dynamic-select-form-field [key]="field[0]" [field]="field[1]" [class]="field[1].hostClass" [group]="$any(structure)">
+                </app-dynamic-select-form-field>
+            </ng-container>
+
+            <!-- AUTOCOMPLETE -->
+            <ng-container *ngIf="field[1].type === 'autocomplete'">
+                <app-dynamic-autocomplete-form-field [key]="field[0]" [field]="field[1]" [class]="field[1].hostClass">
+                </app-dynamic-autocomplete-form-field>
+            </ng-container>
+
+            <!-- TOGGLE GROUP -->
+            <ng-container *ngIf="field[1].type === 'toggle-group'">
+                <app-dynamic-toggle-group [key]="field[0]" [field]="field[1]" [class]="field[1].hostClass">
+                </app-dynamic-toggle-group>
+            </ng-container>
+
+            <!-- CHECKBOX / SLIDE TOGGLE -->
+            <ng-container *ngIf="field[1].type === 'toggle'">
+                <app-dynamic-toggle [key]="field[0]" [field]="field[1]" [class]="field[1].hostClass">
+                </app-dynamic-toggle>
+            </ng-container>
+
+            <!-- DATE -->
+            <ng-container *ngIf="field[1].type === 'date'">
+                <app-dynamic-date-picker-form-field [key]="field[0]" [field]="field[1]" [class]="field[1].hostClass">
+                </app-dynamic-date-picker-form-field>
+            </ng-container>
+
+            <ng-container *ngFor="let tmpl of templates">
+
+                <ng-container *ngIf="shouldDisplayAfterIndexOrKey(tmpl, i, field[0])">
+                    <!-- using an ng-container allows us to render the template without any additional wrapping -->
+                    <ng-container [ngTemplateOutlet]="tmpl"></ng-container>
+                </ng-container>
+
+            </ng-container>
+
+        </ng-container>
+
+    </div>
+</form>

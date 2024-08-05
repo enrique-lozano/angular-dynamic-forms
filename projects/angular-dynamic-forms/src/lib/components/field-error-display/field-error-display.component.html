@@ -1,0 +1,58 @@
+<ng-container *ngIf="getError() === 'minlength'">
+    {{ "COMMON.VALIDATIONS.min_length" | transloco: {x: control.errors && control.errors['minlength']['requiredLength']
+    } }}
+</ng-container>
+<ng-container *ngIf="getError() === 'maxlength'">
+    {{ "COMMON.VALIDATIONS.max_length" | transloco: {x: control.errors && control.errors['maxlength']['requiredLength']
+    } }}
+</ng-container>
+<ng-container *ngIf="getError() === 'pattern'">
+    {{ (control.errors && control.errors['patternErrorMsg'] ?
+    control.errors['patternErrorMsg'] :
+    "COMMON.VALIDATIONS.pattern")
+    | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'minTime'">
+    {{ "El valor mínimo debe ser " + (control.errors && control.errors['minTime']) | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'maxTime'">
+    {{ "El valor máximo debe ser " + (control.errors && control.errors['maxTime']) | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'required'">
+    {{ "COMMON.VALIDATIONS.mandatory" | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'equal'">
+    {{ control.errors && control.errors['equal'] | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'dniNotAvailable'">
+    {{ "COMMON.VALIDATIONS.dni_not_available" | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'email'">
+    {{ "COMMON.VALIDATIONS.email" | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'max'">
+    {{ "COMMON.VALIDATIONS.max" | transloco : {x: control.errors && control.errors['max']['max'] } }}
+</ng-container>
+<ng-container *ngIf="getError() === 'min'">
+    {{ "COMMON.VALIDATIONS.min" | transloco : {x: control.errors && control.errors['min']['min']} }}
+</ng-container>
+<ng-container *ngIf="getError() === 'matDatepickerMax'">
+    {{ "COMMON.VALIDATIONS.max_date" | transloco : {x: (control.errors && control.errors['matDatepickerMax']['max'] |
+    date)} }}
+</ng-container>
+<ng-container *ngIf="getError() === 'matDatepickerMin'">
+    {{ "COMMON.VALIDATIONS.min_date" | transloco : {x: (control.errors && control.errors['matDatepickerMin']['min'] |
+    date)} }}
+</ng-container>
+<ng-container *ngIf="getError() === 'requireUpperAndLowerCase'">
+    {{ "COMMON.VALIDATIONS.require_upper_and_lower_case" | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'requireDigit'">
+    {{ "COMMON.VALIDATIONS.require_digit" | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'invalidNifNie'">
+    {{ "COMMON.VALIDATIONS.invalid_nif_nie" | transloco }}
+</ng-container>
+<ng-container *ngIf="getError() === 'affiliationNumberInvalid'">
+    {{ "COMMON.VALIDATIONS.affiliation_number_invalid" | transloco }}
+</ng-container>
